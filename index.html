@@ -1,0 +1,457 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description"
+        content="Site oficial do Rotary Club de Porto Alegre Lindóia. Conheça nossos projetos, história e saiba como se juntar a nós.">
+    <title>Rotary Club de Porto Alegre Lindóia</title>
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+    <!-- FontAwesome para Ícones -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/styles.css">
+</head>
+
+<body>
+
+    <!-- Cabeçalho / Navegação -->
+    <header id="header">
+        <div class="container header-content">
+            <div class="logo">
+                <a href="#home">
+                    <h1>Rotary <span>Lindóia</span></h1>
+                </a>
+            </div>
+            <nav id="navbar">
+                <ul class="nav-links">
+                    <li><a href="#home">Home</a></li>
+                    <li><a href="#sobre">Sobre Nós</a></li>
+                    <li><a href="#projetos">Projetos</a></li>
+                    <li><a href="#satelite">Clube Satélite</a></li>
+                    <li><a href="#eventos">Eventos</a></li>
+                    <li><a href="#contato">Contato</a></li>
+                </ul>
+            </nav>
+            <div class="cta-header">
+                <a href="#junte-se" class="btn btn-primary">Junte-se a nós</a>
+            </div>
+            <div class="mobile-menu-toggle">
+                <i class="fas fa-bars"></i>
+            </div>
+        </div>
+    </header>
+
+    <!-- 1. HOME -->
+    <section id="home" class="hero">
+        <div class="hero-slider" id="hero-slider">
+            <!-- Slide 1 -->
+            <div class="slide active"
+                style="background-image: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('assets/images/banner.png');">
+                <div class="container slide-content">
+                    <span class="tag">Fazendo a Diferença</span>
+                    <h2>Ação que Transforma Vidas</h2>
+                    <p>Junte-se ao Rotary Club Porto Alegre Lindóia e faça parte de projetos que impactam a nossa
+                        comunidade local e global.</p>
+                    <div class="hero-actions">
+                        <a href="#junte-se" class="btn btn-primary btn-large">Doe Agora</a>
+                        <a href="#projetos" class="btn btn-outline btn-large">Conheça Nossos Projetos</a>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="quick-highlights container">
+            <div class="highlight-item">
+                <i class="fas fa-volleyball"></i>
+                <span>Copa de Vôlei</span>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-ring"></i>
+                <span>Programa dos Lacres</span>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-glasses"></i>
+                <span>Banco de Óculos</span>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-book-reader"></i>
+                <span>Educação Social</span>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-briefcase"></i>
+                <span>Capacitação Jovem</span>
+            </div>
+            <div class="highlight-item">
+                <i class="fas fa-globe-americas"></i>
+                <span>Intercâmbio</span>
+            </div>
+        </div>
+    </section>
+
+    <!-- FORMULÁRIO JUNTE-SE A NÓS (Destacado abaixo da Home) -->
+    <section id="junte-se" class="join-us-section bg-light">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Torne-se um de nós</h2>
+                <p>Escolha como você deseja impactar a comunidade ao nosso lado.</p>
+            </div>
+            <div class="form-container box-shadow">
+                <form id="join-form">
+                    <input type="hidden" name="form_type" value="junte_se">
+                    <div class="form-group">
+                        <label for="tipo-interesse">Eu quero ser:</label>
+                        <select id="tipo-interesse" name="tipo-interesse" required>
+                            <option value="">Selecione uma opção...</option>
+                            <option value="rotariano">Ser Rotariano</option>
+                            <option value="voluntario">Ser Voluntário</option>
+                            <option value="parceiro">Ser Parceiro</option>
+                            <option value="patrocinador">Ser Patrocinador</option>
+                        </select>
+                    </div>
+
+                    <div id="dynamic-fields" class="hidden">
+                        <div class="form-group">
+                            <label for="nome">Nome Completo:</label>
+                            <input type="text" id="nome" name="nome" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="email">E-mail:</label>
+                            <input type="email" id="email" name="email" required>
+                        </div>
+                        <div class="form-group">
+                            <label for="telefone">Telefone / WhatsApp:</label>
+                            <input type="tel" id="telefone" name="telefone" required>
+                        </div>
+                        <div class="form-group" id="empresa-group" style="display: none;">
+                            <label for="empresa">Nome da Empresa (Opcional):</label>
+                            <input type="text" id="empresa" name="empresa">
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Enviar Interesse</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- 2. SOBRE O ROTARY CLUB -->
+    <section id="sobre" class="about-section">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-text">
+                    <h2>Sobre o Rotary</h2>
+                    <h3>O que é o Rotary</h3>
+                    <p>O Rotary é uma rede global de líderes comunitários, amigos e vizinhos que veem um mundo onde as
+                        pessoas se unem e entram em ação para causar mudanças duradouras em si mesmas, nas suas
+                        comunidades e no mundo todo.</p>
+
+                    <h3>Nossa História</h3>
+                    <p>Fundado há décadas, o <strong>Rotary Club Porto Alegre Lindóia</strong> tem uma trajetória
+                        marcada pelo serviço e solidariedade na Zona Norte de Porto Alegre. Atuamos incansavelmente para
+                        atender às necessidades locais através de ações humanitárias e fomento à paz.</p>
+                </div>
+                <div class="about-image">
+                    <img src="assets/images/educacao.png" alt="Rotary em ação" class="rounded-image box-shadow">
+                </div>
+            </div>
+
+            <!-- Tabs: Galeria e Diretoria -->
+            <div class="about-tabs mt-5">
+                <div class="tab-buttons">
+                    <button class="tab-btn active" data-target="diretoria">Diretoria Atual</button>
+                    <button class="tab-btn" data-target="presidentes">Galeria de Presidentes</button>
+                </div>
+
+                <div class="tab-content active" id="diretoria">
+                    <div class="table-responsive">
+                        <table class="modern-table">
+                            <thead>
+                                <tr>
+                                    <th>Nome</th>
+                                    <th>Cargo</th>
+                                    <th>Função</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>João Silva</td>
+                                    <td>Presidente</td>
+                                    <td>Lidera as reuniões e ações do clube durante o ano rotário.</td>
+                                </tr>
+                                <tr>
+                                    <td>Maria Souza</td>
+                                    <td>Secretária</td>
+                                    <td>Gestão documental e comunicação interna.</td>
+                                </tr>
+                                <tr>
+                                    <td>Carlos Mendes</td>
+                                    <td>Tesoureiro</td>
+                                    <td>Administração financeira e controle do clube.</td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+
+                <div class="tab-content" id="presidentes">
+                    <div class="timeline">
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>2023 - 2024</h4>
+                                <p><strong>Ana Costa</strong> - Focou na expansão do projeto Banco de Óculos.</p>
+                            </div>
+                        </div>
+                        <div class="timeline-item">
+                            <div class="timeline-dot"></div>
+                            <div class="timeline-content">
+                                <h4>2022 - 2023</h4>
+                                <p><strong>Roberto Almeida</strong> - Ampliou a Copa Rotary de Vôlei.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 3. NOSSOS PROJETOS -->
+    <section id="projetos" class="projects-section bg-light">
+        <div class="container">
+            <div class="section-title text-center">
+                <h2>Nossos Projetos</h2>
+                <p>Iniciativas que transformam a nossa comunidade.</p>
+            </div>
+
+            <div class="projects-grid">
+                <!-- Projeto 1 -->
+                <div class="project-card box-shadow">
+                    <img src="assets/images/volei.png" alt="Copa Rotary de Vôlei">
+                    <div class="project-content">
+                        <h3>Copa Rotary de Vôlei</h3>
+                        <p>Torneio anual que promove o esporte, saúde e união entre jovens, com impacto direto na
+                            educação social.</p>
+                        <a href="#" class="btn-text">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Projeto 2 -->
+                <div class="project-card box-shadow">
+                    <img src="assets/images/oculos.png" alt="Banco de Óculos">
+                    <div class="project-content">
+                        <h3>Banco de Óculos</h3>
+                        <p>Arrecadação e doação de óculos gratuitos para crianças, garantindo saúde visual e melhor
+                            rendimento escolar.</p>
+                        <a href="#" class="btn-text">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Projeto 3 -->
+                <div class="project-card box-shadow">
+                    <img src="assets/images/educacao.png" alt="Educação Social">
+                    <div class="project-content">
+                        <h3>Educação Social que Transforma</h3>
+                        <p>Foco social e impacto na comunidade através de módulos educacionais voltados à cidadania e
+                            desenvolvimento.</p>
+                        <a href="#" class="btn-text">Saiba mais <i class="fas fa-arrow-right"></i></a>
+                    </div>
+                </div>
+
+                <!-- Outros Projetos em formato lista simplificada -->
+                <div class="project-list-card box-shadow">
+                    <h3>Mais Iniciativas</h3>
+                    <ul class="clean-list">
+                        <li><i class="fas fa-check-circle text-primary"></i> <strong>Programa dos Lacres:</strong>
+                            Arrecadação de lacres para conversão em cadeiras de rodas.</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> <strong>Jantar da Solidariedade:</strong>
+                            Evento tradicional de arrecadação de recursos.</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> <strong>Capacitação de Jovens:</strong>
+                            Projeto educacional junto à Escola Argentina.</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> <strong>Programa Polio Plus:</strong>
+                            Combate global à Poliomielite.</li>
+                        <li><i class="fas fa-check-circle text-primary"></i> <strong>Intercâmbio de Jovens:</strong>
+                            Experiências internacionais para a juventude.</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 4. CLUBE SATÉLITE -->
+    <section id="satelite" class="satellite-section">
+        <div class="container">
+            <div class="satellite-content text-center">
+                <span class="tag">Expansão e Solidariedade</span>
+                <h2>Rotary Club Satélite - Lindóia Solidário</h2>
+                <p class="lead">Uma extensão do nosso clube, focada em ações ágeis e atendimento emergencial às
+                    comunidades vulneráveis.</p>
+            </div>
+
+            <div class="satellite-features mt-5">
+                <div class="feature-box box-shadow">
+                    <i class="fas fa-history feature-icon"></i>
+                    <h4>Nossa História</h4>
+                    <p>Fundado para ampliar o alcance das ações na região com uma dinâmica mais flexível de reuniões e
+                        projetos.</p>
+                </div>
+                <div class="feature-box box-shadow">
+                    <i class="fas fa-users feature-icon"></i>
+                    <h4>Liderança</h4>
+                    <p>Contamos com uma diretoria dedicada e uma galeria de líderes que constroem a história do clube
+                        satélite.</p>
+                </div>
+                <div class="feature-box box-shadow">
+                    <i class="fas fa-hands-helping feature-icon"></i>
+                    <h4>Ações Rápidas</h4>
+                    <p>Projetos focados em entrega rápida de valor social, como campanhas de agasalho e cestas básicas.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5 & 6. EVENTOS E NOTÍCIAS (Misto) -->
+    <section id="eventos" class="news-events-section bg-light">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="section-title">
+                        <h2>Próximos Eventos</h2>
+                    </div>
+                    <div class="event-list">
+                        <div class="event-item box-shadow">
+                            <div class="event-date">
+                                <span class="day">15</span>
+                                <span class="month">OUT</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Jantar da Solidariedade</h4>
+                                <p>Lindóia Tênis Clube - 20h00</p>
+                            </div>
+                        </div>
+                        <div class="event-item box-shadow">
+                            <div class="event-date">
+                                <span class="day">22</span>
+                                <span class="month">NOV</span>
+                            </div>
+                            <div class="event-details">
+                                <h4>Copa Rotary de Vôlei - Finais</h4>
+                                <p>Ginásio Municipal - 09h00</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-6">
+                    <div class="section-title">
+                        <h2>Últimas Notícias</h2>
+                    </div>
+                    <div class="news-list">
+                        <div class="news-item">
+                            <img src="assets/images/oculos.png" alt="Notícia">
+                            <div class="news-content">
+                                <span class="news-date">10 de Setembro, 2023</span>
+                                <h4>Mais de 50 crianças recebem óculos</h4>
+                                <a href="#" class="btn-text">Ler mais</a>
+                            </div>
+                        </div>
+                        <div class="news-item">
+                            <img src="assets/images/educacao.png" alt="Notícia">
+                            <div class="news-content">
+                                <span class="news-date">28 de Agosto, 2023</span>
+                                <h4>Formatura do curso de capacitação</h4>
+                                <a href="#" class="btn-text">Ler mais</a>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 7. DEPOIMENTOS -->
+    <section id="depoimentos" class="testimonials-section">
+        <div class="container text-center">
+            <span class="tag">O que dizem sobre nós</span>
+            <div class="testimonials-slider">
+                <div class="testimonial-card">
+                    <p class="quote">"O projeto Banco de Óculos mudou a vida da minha filha. Agora ela consegue
+                        acompanhar as aulas perfeitamente!"</p>
+                    <div class="author">
+                        <strong>Maria Aparecida</strong>
+                        <span>Mãe de Beneficiada</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 10. PARCEIROS E PATROCINADORES -->
+    <section id="parceiros" class="partners-section bg-light">
+        <div class="container text-center">
+            <h2>Nossos Parceiros e Patrocinadores</h2>
+            <p>Obrigado às empresas e instituições que fazem nossos projetos acontecerem.</p>
+            <div class="partners-logos">
+                <!-- Logos genéricos para exemplo -->
+                <div class="logo-box">Logo Parceiro 1</div>
+                <div class="logo-box">Logo Parceiro 2</div>
+                <div class="logo-box">Logo Parceiro 3</div>
+                <div class="logo-box">Logo Parceiro 4</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 8 & 9. CONTATO E COMO PARTICIPAR -->
+    <footer id="contato" class="footer">
+        <div class="container">
+            <div class="footer-grid">
+                <div class="footer-col info-col">
+                    <h3>Rotary Club Porto Alegre Lindóia</h3>
+                    <p>Dar de si antes de pensar em si.</p>
+                    <ul class="contact-info">
+                        <li><i class="fas fa-map-marker-alt"></i> Reuniões: Lindóia Tênis Clube<br>Todas as
+                            terças-feiras</li>
+                        <li><i class="fas fa-envelope"></i> rclindoia@gmail.com</li>
+                    </ul>
+                    <div class="social-links">
+                        <a href="#"><i class="fab fa-facebook-f"></i></a>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"><i class="fab fa-youtube"></i></a>
+                    </div>
+                </div>
+
+                <div class="footer-col links-col">
+                    <h3>Links Rápidos</h3>
+                    <ul>
+                        <li><a href="#sobre">Nossa História</a></li>
+                        <li><a href="#projetos">Projetos</a></li>
+                        <li><a href="#eventos">Eventos</a></li>
+                        <li><a href="#junte-se">Como Participar / Requisitos</a></li>
+                    </ul>
+                </div>
+
+                <div class="footer-col form-col">
+                    <h3>Fale Conosco</h3>
+                    <form id="contact-form" class="dark-form">
+                        <input type="hidden" name="form_type" value="contato">
+                        <input type="text" name="nome" placeholder="Nome" required>
+                        <input type="email" name="email" placeholder="E-mail" required>
+                        <textarea name="mensagem" placeholder="Sua Mensagem" rows="3" required></textarea>
+                        <button type="submit" class="btn btn-primary">Enviar</button>
+                    </form>
+                </div>
+            </div>
+            <div class="footer-bottom text-center">
+                <p>&copy; 2024 Rotary Club de Porto Alegre Lindóia. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Scripts -->
+    <script src="js/main.js"></script>
+</body>
+
+</html>
