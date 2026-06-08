@@ -18,9 +18,34 @@ document.addEventListener('DOMContentLoaded', () => {
             } else {
                 icon.classList.remove('fa-times');
                 icon.classList.add('fa-bars');
+                // Close all dropdowns when menu is closed
+                document.querySelectorAll('.dropdown').forEach(d => d.classList.remove('open'));
             }
         });
     }
+
+    // Dropdowns click toggle on mobile
+    const dropdowns = document.querySelectorAll('.dropdown');
+    dropdowns.forEach(dropdown => {
+        const toggle = dropdown.querySelector('.dropdown-toggle');
+        if (toggle) {
+            toggle.addEventListener('click', (e) => {
+                if (window.innerWidth <= 768) {
+                    e.preventDefault();
+                    e.stopPropagation();
+                    
+                    // Close other dropdowns
+                    dropdowns.forEach(other => {
+                        if (other !== dropdown) {
+                            other.classList.remove('open');
+                        }
+                    });
+                    
+                    dropdown.classList.toggle('open');
+                }
+            });
+        }
+    });
 
     // 2. Sticky Header & Smooth Scrolling
     const header = document.getElementById('header');
@@ -38,6 +63,11 @@ document.addEventListener('DOMContentLoaded', () => {
     // Smooth scrolling for anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
+            // Ignora rolagem direta no mobile para os seletores de submenu
+            if (this.classList.contains('dropdown-toggle') && window.innerWidth <= 768) {
+                return;
+            }
+
             const targetId = this.getAttribute('href');
             
             // Ignora href="#" vazios
@@ -52,6 +82,9 @@ document.addEventListener('DOMContentLoaded', () => {
                 if (navLinks.classList.contains('active')) {
                     navLinks.classList.remove('active');
                     mobileMenuToggle.querySelector('i').classList.replace('fa-times', 'fa-bars');
+                    
+                    // Close all open dropdowns too
+                    dropdowns.forEach(d => d.classList.remove('open'));
                 }
 
                 // Scroll to element

@@ -1,0 +1,5 @@
+# Regras do Agente para este Workspace
+
+- Não utilize o subagente de navegador (`browser_subagent`) ou capturas de tela para verificar alterações simples de HTML, CSS ou JS.
+- Apenas execute o subagente de navegador se as alterações forem muito complexas, envolverem fluxos multi-páginas ou se o usuário solicitar explicitamente.
+- Priorize a execução direta, rápida e simplificada das tarefas.
