@@ -67,57 +67,102 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
-    // 3. Tabs for 'Sobre' section
-    const tabBtns = document.querySelectorAll('.tab-btn');
-    const tabContents = document.querySelectorAll('.tab-content');
+    // Helper function to manage tab groups
+    const setupTabs = (btnSelector, contentSelector) => {
+        const buttons = document.querySelectorAll(btnSelector);
+        const contents = document.querySelectorAll(contentSelector);
 
-    tabBtns.forEach(btn => {
-        btn.addEventListener('click', () => {
-            // Remove active from all
-            tabBtns.forEach(b => b.classList.remove('active'));
-            tabContents.forEach(c => c.classList.remove('active'));
+        buttons.forEach(btn => {
+            btn.addEventListener('click', () => {
+                const targetId = btn.getAttribute('data-target');
+                const targetContent = document.getElementById(targetId);
 
-            // Add active to clicked
-            btn.classList.add('active');
-            const targetId = btn.getAttribute('data-target');
-            document.getElementById(targetId).classList.add('active');
+                if (targetContent) {
+                    // Remove active classes
+                    buttons.forEach(b => b.classList.remove('active'));
+                    contents.forEach(c => c.classList.remove('active'));
+
+                    // Add active class to clicked button and target content
+                    btn.classList.add('active');
+                    targetContent.classList.add('active');
+                }
+            });
         });
-    });
+    };
 
-    // 4. Dynamic Form for 'Junte-se a nós'
+    // 3. Tabs for 'Sobre' section
+    setupTabs('.about-tabs .tab-btn', '.about-tabs .tab-content');
+
+    // 4. Tabs for 'Faça Parte' (Home Action Tabs)
+    setupTabs('.action-tab-btn', '.action-tab-content');
+
+    // 5. Tabs for 'Clube Satélite'
+    setupTabs('.sat-tab-btn', '.sat-tab-content');
+
+    // 6. Dynamic Form Fields (Show Company name only for Partner/Sponsor)
     const selectInteresse = document.getElementById('tipo-interesse');
-    const dynamicFields = document.getElementById('dynamic-fields');
-    const empresaGroup = document.getElementById('empresa-group');
+    const empresaGroup = document.querySelector('.val-empresa-group');
 
-    if (selectInteresse) {
+    if (selectInteresse && empresaGroup) {
         selectInteresse.addEventListener('change', (e) => {
             const value = e.target.value;
-            
-            if (value !== "") {
-                dynamicFields.classList.remove('hidden');
-                
-                // Show 'Empresa' field only for parceiro/patrocinador
-                if (value === 'parceiro' || value === 'patrocinador') {
-                    empresaGroup.style.display = 'block';
-                } else {
-                    empresaGroup.style.display = 'none';
-                }
+            if (value === 'parceiro' || value === 'patrocinador') {
+                empresaGroup.style.display = 'block';
+                empresaGroup.querySelector('input').setAttribute('required', 'required');
             } else {
-                dynamicFields.classList.add('hidden');
+                empresaGroup.style.display = 'none';
+                empresaGroup.querySelector('input').removeAttribute('required');
             }
         });
     }
 
-    // 5. Form Submissions Handling
-    const joinForm = document.getElementById('join-form');
-    const contactForm = document.getElementById('contact-form');
+    // 7. HTML5 Dialog Modals logic for Projects
+    const openModalButtons = document.querySelectorAll('.open-modal');
+    const modals = document.querySelectorAll('dialog.project-modal');
+
+    openModalButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            const modalId = btn.getAttribute('data-modal');
+            const modal = document.getElementById(modalId);
+            if (modal) {
+                modal.showModal();
+            }
+        });
+    });
+
+    modals.forEach(modal => {
+        // Close on button click
+        const closeBtn = modal.querySelector('.close-modal-btn');
+        if (closeBtn) {
+            closeBtn.addEventListener('click', () => {
+                modal.close();
+            });
+        }
+
+        // Close on click outside (on backdrop)
+        modal.addEventListener('click', (e) => {
+            const rect = modal.getBoundingClientRect();
+            const isInDialog = (
+                rect.top <= e.clientY &&
+                e.clientY <= rect.top + rect.height &&
+                rect.left <= e.clientX &&
+                e.clientX <= rect.left + rect.width
+            );
+            if (!isInDialog) {
+                modal.close();
+            }
+        });
+    });
+
+    // 8. General Form Submissions Handling
+    const ajaxForms = document.querySelectorAll('.dynamic-ajax-form');
 
     const handleFormSubmission = async (form, e) => {
         e.preventDefault();
         const btn = form.querySelector('button[type="submit"]');
-        const originalText = btn.textContent;
+        const originalText = btn.innerHTML;
         
-        btn.textContent = 'Enviando...';
+        btn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Enviando...';
         btn.disabled = true;
 
         const formData = new FormData(form);
@@ -131,31 +176,33 @@ document.addEventListener('DOMContentLoaded', () => {
             const result = await response.json();
 
             if (result.status === 'success') {
-                btn.textContent = 'Enviado com sucesso!';
+                btn.innerHTML = '<i class="fas fa-check"></i> Enviado com sucesso!';
                 btn.style.backgroundColor = '#28a745'; // Green
                 form.reset();
                 
-                if (form.id === 'join-form' && dynamicFields) {
-                    dynamicFields.classList.add('hidden');
+                // If it has dynamic fields, reset them
+                if (empresaGroup) {
+                    empresaGroup.style.display = 'none';
                 }
             } else {
-                btn.textContent = 'Erro ao enviar.';
+                btn.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Erro ao enviar.';
                 btn.style.backgroundColor = '#dc3545'; // Red
                 console.error(result.message);
             }
         } catch (error) {
-            btn.textContent = 'Erro de conexão.';
+            btn.innerHTML = '<i class="fas fa-wifi"></i> Erro de conexão.';
             btn.style.backgroundColor = '#dc3545'; // Red
             console.error('Erro na requisição:', error);
         } finally {
             setTimeout(() => {
-                btn.textContent = originalText;
+                btn.innerHTML = originalText;
                 btn.style.backgroundColor = '';
                 btn.disabled = false;
             }, 4000);
         }
     };
 
-    if (joinForm) joinForm.addEventListener('submit', (e) => handleFormSubmission(joinForm, e));
-    if (contactForm) contactForm.addEventListener('submit', (e) => handleFormSubmission(contactForm, e));
+    ajaxForms.forEach(form => {
+        form.addEventListener('submit', (e) => handleFormSubmission(form, e));
+    });
 });

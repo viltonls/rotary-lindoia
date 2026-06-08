@@ -10,14 +10,14 @@ header('Content-Type: application/json');
 
 if ($_SERVER["REQUEST_METHOD"] == "POST") {
     
-    // Identifica qual formulário foi enviado ("junte_se" ou "contato")
+    // Identifica qual formulário foi enviado
     $form_type = $_POST['form_type'] ?? '';
     
     // Dados comuns
     $nome = htmlspecialchars(trim($_POST['nome'] ?? ''));
     $email = filter_var(trim($_POST['email'] ?? ''), FILTER_SANITIZE_EMAIL);
     
-    // Validação básica
+    // Validação básica de campos comuns
     if(empty($nome) || empty($email) || empty($form_type)) {
         echo json_encode(["status" => "error", "message" => "Dados obrigatórios faltando."]);
         exit;
@@ -32,28 +32,48 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $corpo = "";
     $corpo .= "Nome: {$nome}\n";
     $corpo .= "E-mail: {$email}\n";
+    
+    // Captura telefone se enviado
+    if (isset($_POST['telefone'])) {
+        $telefone = htmlspecialchars(trim($_POST['telefone']));
+        $corpo .= "Telefone/WhatsApp: {$telefone}\n";
+    }
+    
     $corpo .= "------------------------------------\n\n";
 
     if ($form_type === 'junte_se') {
-        // Campos específicos do form Junte-se
         $tipo_interesse = htmlspecialchars(trim($_POST['tipo-interesse'] ?? ''));
-        $telefone = htmlspecialchars(trim($_POST['telefone'] ?? ''));
         $empresa = htmlspecialchars(trim($_POST['empresa'] ?? ''));
         
-        $assunto = $assunto_prefixo . "Novo interesse: " . ucfirst($tipo_interesse);
-        
-        $corpo .= "Interesse em ser: {$tipo_interesse}\n";
-        $corpo .= "Telefone/WhatsApp: {$telefone}\n";
-        if(!empty($empresa)) {
-            $corpo .= "Empresa: {$empresa}\n";
+        $assunto = $assunto_prefixo . "Interesse de Adesão: " . ucfirst($tipo_interesse);
+        $corpo .= "Tipo de interesse: Ser {$tipo_interesse}\n";
+        if (!empty($empresa)) {
+            $corpo .= "Empresa vinculada: {$empresa}\n";
         }
+    } else if ($form_type === 'doe_agora') {
+        $projeto_doacao = htmlspecialchars(trim($_POST['projeto-doacao'] ?? ''));
+        $mensagem = htmlspecialchars(trim($_POST['mensagem'] ?? ''));
+        
+        $assunto = $assunto_prefixo . "Novo interesse em Doação: " . ucfirst($projeto_doacao);
+        $corpo .= "Projeto selecionado para doação: " . ucfirst($projeto_doacao) . "\n";
+        $corpo .= "Mensagem/Detalhes da doação:\n{$mensagem}\n";
+    } else if ($form_type === 'ser_rotariano') {
+        $profissao = htmlspecialchars(trim($_POST['profissao'] ?? ''));
+        $mensagem = htmlspecialchars(trim($_POST['mensagem'] ?? ''));
+        
+        $assunto = $assunto_prefixo . "Candidatura a Membro Rotariano";
+        $corpo .= "Profissão / Área de atuação: {$profissao}\n";
+        $corpo .= "Por que deseja ser Rotariano:\n{$mensagem}\n";
+    } else if ($form_type === 'como_participar') {
+        $mensagem = htmlspecialchars(trim($_POST['mensagem'] ?? ''));
+        
+        $assunto = $assunto_prefixo . "Interesse em Participar (Seção 9)";
+        $corpo .= "Motivação/Mensagem:\n{$mensagem}\n";
     } else if ($form_type === 'contato') {
-        // Campos específicos do form Contato
         $mensagem = htmlspecialchars(trim($_POST['mensagem'] ?? ''));
         
         $assunto = $assunto_prefixo . "Nova mensagem de contato";
-        
-        $corpo .= "Mensagem:\n{$mensagem}\n";
+        $corpo .= "Mensagem de contato:\n{$mensagem}\n";
     } else {
         echo json_encode(["status" => "error", "message" => "Tipo de formulário inválido."]);
         exit;
@@ -63,9 +83,7 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $corpo .= "Este e-mail foi enviado a partir do site Rotary Lindóia.";
 
     // Headers do e-mail
-    // Dica: Para evitar cair no SPAM na Hostinger, o header "From" idealmente deve 
-    // ser um e-mail do seu próprio domínio (ex: contato@seudominio.com.br).
-    // Aqui usamos o email do remetente no From e Reply-To para facilitar a resposta.
+    // Dica da Hostinger: usar From e Reply-To adequados.
     $headers = "From: {$email}\r\n"; 
     $headers .= "Reply-To: {$email}\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
