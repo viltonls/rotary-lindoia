@@ -3,27 +3,27 @@
    ========================================= */
 
 :root {
-    /* Rotary Official Colors */
-    --rotary-blue: #005eaa;
-    --rotary-gold: #f7a81b;
-    --rotary-light-blue: #009bdf;
+    /* Rotary Official Colors - Mapped to Grayscale */
+    --rotary-blue: #333333;
+    --rotary-gold: #777777;
+    --rotary-light-blue: #555555;
 
-    /* Neutral Colors */
-    --text-dark: #333333;
-    --text-light: #666666;
-    --bg-light: #f8f9fa;
+    /* Neutral Colors - Grayscale */
+    --text-dark: #111111;
+    --text-light: #555555;
+    --bg-light: #f5f5f5;
     --white: #ffffff;
-    --border-color: #e0e0e0;
+    --border-color: #888888;
 
-    /* Typography */
-    --font-main: 'Inter', sans-serif;
+    /* Typography - Monospace */
+    --font-main: 'Courier New', Courier, monospace;
 
-    /* Spacing & Transitions */
-    --transition: all 0.3s ease;
-    --transition-premium: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --box-shadow-premium: 0 15px 45px rgba(0, 0, 0, 0.08);
-    --border-radius: 8px;
+    /* Spacing & Transitions - Stripped shadows and smooth animations */
+    --transition: none;
+    --transition-premium: none;
+    --box-shadow: none;
+    --box-shadow-premium: none;
+    --border-radius: 4px;
 }
 
 /* Custom Premium Scrollbar */
@@ -109,26 +109,28 @@ html {
 }
 
 .btn-primary {
-    background: linear-gradient(135deg, var(--rotary-gold), #e09612);
-    color: var(--white);
+    background: #e0e0e0;
+    color: #111111;
+    border: 2px solid #333333;
 }
 
 .btn-primary:hover {
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(247, 168, 27, 0.35);
+    background: #d0d0d0;
+    transform: none;
+    box-shadow: none;
 }
 
 .btn-outline {
     background-color: transparent;
-    border: 2px solid var(--white);
-    color: var(--white);
+    border: 2px solid #333333;
+    color: #333333;
 }
 
 .btn-outline:hover {
-    background-color: var(--white);
-    color: var(--rotary-blue);
-    transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(255, 255, 255, 0.2);
+    background-color: #eeeeee;
+    color: #111111;
+    transform: none;
+    box-shadow: none;
 }
 
 .btn-large {
@@ -436,12 +438,10 @@ header {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.08),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent);
     transition: 0.5s;
 }
 
@@ -548,7 +548,7 @@ header {
    FORMULÁRIO JUNTE-SE
    ========================================= */
 .join-us-section {
-    padding-bottom: 80px;
+    padding: 80px 0;
     background: linear-gradient(to bottom, var(--white), var(--bg-light));
 }
 
@@ -632,8 +632,6 @@ textarea:focus {
     padding: 6px;
     border-radius: 40px;
     width: max-content;
-    max-width: 100%;
-    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
 }
@@ -641,7 +639,7 @@ textarea:focus {
 .tab-btn {
     background: none;
     border: none;
-    padding: 10px 16px;
+    padding: 10px 24px;
     font-size: 1rem;
     font-weight: 600;
     color: var(--text-light);
@@ -871,17 +869,17 @@ textarea:focus {
    ========================================= */
 .satellite-section {
     padding: 100px 0;
-    background: radial-gradient(circle at center, #0c5699 0%, #002d54 100%);
-    color: var(--white);
+    background: #eeeeee;
+    color: #111111;
     position: relative;
 }
 
 .satellite-section h2 {
-    color: var(--white);
+    color: #111111;
 }
 
 .satellite-section p {
-    color: rgba(255, 255, 255, 0.9);
+    color: #333333;
 }
 
 .satellite-section p.lead {
@@ -1059,15 +1057,15 @@ textarea:focus {
    FOOTER
    ========================================= */
 .footer {
-    background-color: #081424;
-    color: var(--white);
+    background-color: #eeeeee;
+    color: #111111;
     padding: 80px 0 20px;
-    border-top: 4px solid var(--rotary-gold);
+    border-top: 4px solid #333333;
 }
 
 .footer h3 {
-    color: var(--white);
-    border-bottom: 2px solid var(--rotary-gold);
+    color: #111111;
+    border-bottom: 2px solid #333333;
     padding-bottom: 10px;
     display: inline-block;
 }
@@ -1600,7 +1598,7 @@ textarea:focus {
 }
 
 .author-avatar.gold {
-    background: linear-gradient(135deg, var(--rotary-gold), #e09612);
+    background: linear-gradient(135deg, var(--rotary-gold), #777777);
     box-shadow: 0 4px 10px rgba(247, 168, 27, 0.2);
 }
 
@@ -1851,8 +1849,6 @@ header {
     padding: 6px;
     border-radius: 40px;
     width: max-content;
-    max-width: 100%;
-    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
 }
@@ -1860,7 +1856,7 @@ header {
 .action-tab-btn {
     background: none;
     border: none;
-    padding: 10px 16px;
+    padding: 10px 24px;
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-light);
@@ -2045,7 +2041,7 @@ dialog.project-modal[open] {
     position: absolute;
     top: 20px;
     right: 20px;
-    background: #f1f3f5;
+    background: #f5f5f5;
     border: none;
     width: 36px;
     height: 36px;
@@ -2059,7 +2055,7 @@ dialog.project-modal[open] {
 }
 
 .close-modal-btn:hover {
-    background: #e9ecef;
+    background: #eeeeee;
     color: var(--rotary-blue);
 }
 
@@ -2103,7 +2099,7 @@ dialog.project-modal[open] {
 .modal-placeholder-box {
     width: 100%;
     height: 180px;
-    background-color: #f1f3f5;
+    background-color: #f5f5f5;
     border-radius: 8px;
     display: flex;
     flex-direction: column;
@@ -2189,7 +2185,7 @@ dialog.project-modal[open] {
     width: 65px;
     height: 65px;
     border-radius: 50%;
-    background: linear-gradient(135deg, var(--rotary-gold), #e09612);
+    background: linear-gradient(135deg, var(--rotary-gold), #777777);
     display: flex;
     align-items: center;
     justify-content: center;
@@ -2229,8 +2225,6 @@ dialog.project-modal[open] {
     padding: 6px;
     border-radius: 40px;
     width: max-content;
-    max-width: 100%;
-    flex-wrap: wrap;
     margin-left: auto;
     margin-right: auto;
     border: 1px solid rgba(255, 255, 255, 0.08);
@@ -2240,7 +2234,7 @@ dialog.project-modal[open] {
     background: none;
     border: none;
     color: rgba(255, 255, 255, 0.7);
-    padding: 10px 16px;
+    padding: 10px 24px;
     font-size: 0.95rem;
     font-weight: 600;
     cursor: pointer;
@@ -2404,7 +2398,7 @@ dialog.project-modal[open] {
 }
 
 .opportunity-card {
-    background: #f8f9fa;
+    background: #f5f5f5;
     border: 1px dashed var(--border-color);
     padding: 25px;
     border-radius: 8px;
@@ -2422,7 +2416,7 @@ dialog.project-modal[open] {
 }
 
 .testimonial-slider {
-    background: #f8f9fa;
+    background: #f5f5f5;
     border-radius: 8px;
     padding: 30px;
     border-left: 5px solid var(--rotary-gold);
@@ -2624,5 +2618,431 @@ dialog.project-modal[open] {
     .sat-tab-btn.active,
     .action-tab-btn.active {
         border-left-color: var(--rotary-gold);
+    }
+}
+
+/* ==========================================================================
+   WIREFRAME OVERRIDES - APPENDED
+   ========================================================================== */
+
+/* Global Reset of Fonts, Shadows and Transitions */
+* {
+    font-family: 'Courier New', Courier, monospace !important;
+    text-shadow: none !important;
+    box-shadow: none !important;
+    transition: none !important;
+    animation: none !important;
+}
+
+/* Layout Blueprint Guides */
+.container {
+    outline: 1px dashed rgba(120, 120, 120, 0.3);
+}
+
+section {
+    border-bottom: 2px dashed #888888 !important;
+}
+
+header {
+    border-bottom: 2px solid #333333 !important;
+}
+
+footer {
+    border-top: 2px solid #333333 !important;
+    background-color: #eeeeee !important;
+}
+
+/* Image to SVG Placeholders */
+img {
+    content: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='200'%20viewBox='0%200%20300%20200'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%23e0e0e0'%20stroke='%23888888'%20stroke-width='2'/%3E%3Cline%20x1='0'%20y1='0'%20x2='300'%20y2='200'%20stroke='%23aaaaaa'%20stroke-width='2'/%3E%3Cline%20x1='300'%20y1='0'%20x2='0'%20y2='200'%20stroke='%23aaaaaa'%20stroke-width='2'/%3E%3Ctext%20x='50%25'%20y='50%25'%20dominant-baseline='middle'%20text-anchor='middle'%20font-family='monospace'%20font-size='20'%20font-weight='bold'%20fill='%23555555'%3E[IMAGEM]%3C/text%3E%3C/svg%3E") !important;
+    object-fit: cover !important;
+    border: 2px dashed #888888 !important;
+    background: #e0e0e0 !important;
+}
+
+/* Slide background image placeholder */
+.slide,
+.hero-slider {
+    background-image: linear-gradient(rgba(245, 245, 245, 0.95), rgba(245, 245, 245, 0.95)),
+        url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='100'%20height='100'%20viewBox='0%200%20100%20100'%3E%3Cline%20x1='0'%20y1='0'%20x2='100'%20y2='100'%20stroke='%23dddddd'%20stroke-width='1'/%3E%3Cline%20x1='100'%20y1='0'%20x2='0'%20y2='100'%20stroke='%23dddddd'%20stroke-width='1'/%3E%3C/svg%3E") !important;
+    background-color: #f5f5f5 !important;
+    color: #111111 !important;
+}
+
+.slide-content h2,
+.slide-content p {
+    color: #111111 !important;
+    text-shadow: none !important;
+}
+
+/* Flat Wireframe Overrides for Cards, Boxes and Glassmorphism */
+.manifesto-card,
+.quick-highlights,
+.project-card,
+.director-card,
+.sat-director-card,
+.lema-box,
+.timeline-content,
+.sat-info-card,
+.tab-intro-card,
+.motto-card,
+.project-list-card {
+    background: #ffffff !important;
+    border: 2px solid #777777 !important;
+    box-shadow: none !important;
+    transform: none !important;
+    border-radius: 4px !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
+    color: #111111 !important;
+}
+
+.manifesto-card::before {
+    display: none !important;
+}
+
+.manifesto-card h3 {
+    color: #111111 !important;
+}
+
+.manifesto-card .manifesto-highlight {
+    color: #444444 !important;
+    border-left-color: #555555 !important;
+}
+
+.highlight-item {
+    color: #333333 !important;
+    border: 1px solid transparent !important;
+    background: transparent !important;
+}
+
+.highlight-item:hover {
+    transform: none !important;
+    color: #111111 !important;
+    background: #eeeeee !important;
+    border-color: #777777 !important;
+}
+
+.project-card:hover,
+.motto-card:hover {
+    transform: none !important;
+    border-color: #111111 !important;
+    box-shadow: none !important;
+}
+
+/* Tab and Navigation Active States */
+.action-tab-buttons {
+    border-bottom: 2px solid #555555 !important;
+    background-color: #f5f5f5 !important;
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+}
+
+.tab-buttons {
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+}
+
+.action-tab-btn,
+.tab-btn,
+.sat-tab-btn {
+    border: 1px solid #777777 !important;
+    border-radius: 4px !important;
+    background: #e0e0e0 !important;
+    color: #333333 !important;
+    margin: 4px !important;
+    padding: 8px 16px !important; /* Slightly more compact padding to prevent overflowing */
+}
+
+.action-tab-btn.active,
+.tab-btn.active,
+.sat-tab-btn.active {
+    background: #333333 !important;
+    color: #ffffff !important;
+    box-shadow: none !important;
+}
+
+/* Modals */
+.project-modal {
+    border: 2px solid #333333 !important;
+    box-shadow: none !important;
+    border-radius: 4px !important;
+}
+
+.modal-box {
+    background: #ffffff !important;
+    border: 2px solid #555555 !important;
+}
+
+.close-modal-btn {
+    color: #333333 !important;
+}
+
+/* Forms */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+select,
+textarea {
+    border: 2px solid #777777 !important;
+    background-color: #ffffff !important;
+    border-radius: 4px !important;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+    border-color: #111111 !important;
+    box-shadow: none !important;
+}
+
+/* Navigation items */
+.nav-links a {
+    color: #333333 !important;
+}
+
+.nav-links a::after {
+    background-color: #111111 !important;
+}
+
+.nav-links a:hover,
+.nav-links a.active {
+    color: #111111 !important;
+}
+
+.dropdown-menu {
+    border: 2px solid #333333 !important;
+    background-color: #ffffff !important;
+}
+
+.dropdown-menu a:hover {
+    background-color: #eeeeee !important;
+    color: #111111 !important;
+}
+
+.logo span {
+    color: #777777 !important;
+}
+
+/* Specific wireframe fixes for original dark sections (Satellite and Footer) */
+
+/* Satellite Section content styling */
+.satellite-section,
+.satellite-section h2,
+.satellite-section h3,
+.satellite-section h4,
+.satellite-section p,
+.satellite-section p.lead,
+.satellite-content p,
+.satelite-intro-text,
+.motto-card h3,
+.motto-card p,
+.sat-tab-btn,
+.sat-timeline-content,
+.sat-timeline-content h4,
+.sat-timeline-year {
+    color: #111111 !important;
+}
+
+.sat-tab-btn.active {
+    color: #ffffff !important;
+    /* Active tab keeps white text on black background */
+}
+
+.sat-tab-btn:hover:not(.active) {
+    color: #111111 !important;
+    background-color: #eeeeee !important;
+}
+
+/* Satellite containers */
+.satellite-tabs-container {
+    background: #ffffff !important;
+    border: 2px solid #777777 !important;
+    border-radius: 4px !important;
+}
+
+.satelite-tab-buttons {
+    background: #f5f5f5 !important;
+    border: 1px solid #777777 !important;
+    flex-wrap: wrap !important;
+    max-width: 100% !important;
+}
+
+/* Footer Section content styling */
+.footer,
+.footer *,
+.links-col ul li a,
+.footer-bottom,
+.contact-info li span,
+.contact-info li i {
+    color: #111111 !important;
+    opacity: 1 !important;
+}
+
+.footer-bottom p {
+    color: #555555 !important;
+}
+
+.footer-col h3 {
+    border-bottom: 2px solid #555555 !important;
+}
+
+/* Footer Social Links */
+.social-links a {
+    color: #111111 !important;
+    background-color: #e0e0e0 !important;
+    border: 1px solid #777777 !important;
+}
+
+.social-links a:hover {
+    background-color: #cccccc !important;
+}
+
+/* Dark Form in Footer */
+.dark-form input,
+.dark-form textarea {
+    background-color: #ffffff !important;
+    border: 2px solid #777777 !important;
+    color: #111111 !important;
+}
+
+.dark-form input::placeholder,
+.dark-form textarea::placeholder {
+    color: #666666 !important;
+}
+
+/* ==========================================================================
+   RESPONSIVE IMPROVEMENTS AND GRID FIXES
+   ========================================================================== */
+
+/* Quick Highlights responsive grid layout */
+.quick-highlights {
+    display: grid !important;
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    gap: 15px !important;
+    justify-content: center !important;
+}
+
+.highlight-item {
+    flex: none !important;
+    width: 100% !important;
+    margin-bottom: 0 !important;
+}
+
+/* Partners Logos Grid sizing */
+.partners-logos-grid {
+    grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)) !important;
+    gap: 15px !important;
+}
+
+@media (max-width: 992px) {
+    .quick-highlights {
+        transform: translateY(0) !important;
+        margin: 20px auto 0 auto !important;
+        padding: 20px 15px !important;
+        border: 2px solid #777777 !important;
+    }
+}
+
+@media (max-width: 768px) {
+    /* Section paddings - less vertical space wasted on mobile */
+    section,
+    .about-section,
+    .projects-section,
+    .satellite-section,
+    .news-testimonials-section,
+    .how-to-participate-section,
+    .partners-section,
+    .events-section {
+        padding: 50px 0 !important;
+    }
+
+    /* Container padding adjustments for forms and cards */
+    .action-tabs-container,
+    .form-container {
+        padding: 20px !important;
+        margin-top: 20px !important;
+    }
+
+    /* Modal box inner padding to prevent text from hitting the borders */
+    .modal-box {
+        padding: 20px !important;
+    }
+
+    /* About, Action and Satellite tab buttons stack vertically */
+    .action-tab-buttons,
+    .satelite-tab-buttons,
+    .tab-buttons {
+        flex-direction: column !important;
+        align-items: stretch !important;
+        width: 100% !important;
+        border-radius: 8px !important;
+        background-color: #f5f5f5 !important;
+        padding: 6px !important;
+        border: 1px solid #777777 !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+    }
+
+    .sat-tab-btn,
+    .action-tab-btn,
+    .tab-btn {
+        border-bottom: none !important;
+        border-left: 3px solid transparent !important;
+        text-align: left !important;
+        width: auto !important;
+        margin: 4px !important;
+    }
+
+    .sat-tab-btn.active,
+    .action-tab-btn.active,
+    .tab-btn.active {
+        border-left-color: #333333 !important;
+        background: #333333 !important;
+        color: #ffffff !important;
+    }
+
+    /* Stack Satélite motto and projects */
+    .satelite-motto-grid,
+    .sat-projects-grid {
+        grid-template-columns: 1fr !important;
+        gap: 20px !important;
+        margin-top: 2rem !important;
+    }
+
+    /* Stack clean list in Projects section */
+    .clean-list {
+        grid-template-columns: 1fr !important;
+    }
+
+    /* Nav Links scrolling prevention for tall menus on short screens */
+    .nav-links {
+        max-height: calc(100vh - 80px) !important;
+        overflow-y: auto !important;
+    }
+}
+
+@media (max-width: 600px) {
+    /* Stack Director cards to 1 column to avoid squeezed names */
+    .directors-grid,
+    .sat-directors-grid {
+        grid-template-columns: 1fr !important;
+        gap: 15px !important;
+    }
+}
+
+@media (max-width: 480px) {
+    /* Tighten container margins and paddings even further on tiny viewports */
+    .action-tabs-container,
+    .form-container {
+        padding: 15px !important;
+    }
+
+    .slide-content h2 {
+        font-size: 2rem !important;
+    }
+
+    .slide {
+        padding: 60px 0 80px 0 !important;
     }
 }
