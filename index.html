@@ -15,6 +15,9 @@
         rel="stylesheet">
     <!-- FontAwesome para Ícones -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Leaflet CSS for Map -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+        integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin="" />
     <!-- Custom CSS -->
     <link rel="stylesheet" href="css/styles.css">
 </head>
@@ -1050,19 +1053,16 @@
 
             <div class="partners-logos-grid mt-5">
                 <div class="partner-logo box-shadow">
-                    <span>Zaffari</span>
+                    <img src="assets/images/Zaffari-logo.svg" alt="Zaffari">
                 </div>
                 <div class="partner-logo box-shadow">
-                    <span>Sicredi</span>
+                    <img src="assets/images/Sicredi-logo.png" alt="Sicredi">
                 </div>
                 <div class="partner-logo box-shadow">
-                    <span>Panvel</span>
+                    <img src="assets/images/panvel-logo.png" alt="Panvel">
                 </div>
                 <div class="partner-logo box-shadow">
-                    <span>Tênis Clube</span>
-                </div>
-                <div class="partner-logo box-shadow">
-                    <span>(inserir parceiro)</span>
+                    <img src="assets/images/tenisclub-logo.png" alt="Tênis Clube">
                 </div>
                 <div class="partner-logo box-shadow">
                     <span>(inserir parceiro)</span>
@@ -1134,12 +1134,7 @@
             <!-- Mapa / Localização -->
             <div class="footer-map-container mt-5">
                 <div class="map-wrapper box-shadow">
-                    <iframe
-                        src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3454.9458908865485!2d-51.16104862359489!3d-30.00977283086968!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x9519779df56d303f%3A0xe54fb7dcad7a35de!2sLind%C3%B3ia%20T%C3%AAnis%20Clube!5e0!3m2!1spt-BR!2sbr!4v1717855000000!5m2!1spt-BR!2sbr"
-                        width="100%" height="350" style="border:0;" allowfullscreen="" loading="lazy"
-                        referrerpolicy="no-referrer-when-downgrade"
-                        title="Localização do Lindóia Tênis Clube no Google Maps">
-                    </iframe>
+                    <div id="custom-map" style="width: 100%; height: 350px; border-radius: 12px; z-index: 1;"></div>
                 </div>
             </div>
 
@@ -1149,6 +1144,9 @@
         </div>
     </footer>
 
+    <!-- Leaflet JS -->
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+        integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
     <!-- Scripts -->
     <script src="js/main.js"></script>
 </body>

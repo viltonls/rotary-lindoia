@@ -238,4 +238,32 @@ document.addEventListener('DOMContentLoaded', () => {
     ajaxForms.forEach(form => {
         form.addEventListener('submit', (e) => handleFormSubmission(form, e));
     });
+
+    // 9. Custom Map with Leaflet (Replacing Google Maps iframe)
+    const mapElement = document.getElementById('custom-map');
+    if (mapElement) {
+        // Coordenadas do Lindóia Tênis Clube: -30.00977283086968, -51.16104862359489
+        const map = L.map('custom-map').setView([-30.00977283086968, -51.16104862359489], 16);
+
+        // Usando o basemap Light All da CartoDB (clean e moderno)
+        L.tileLayer('https://{s}.basemaps.cartocdn.com/light_all/{z}/{x}/{y}{r}.png', {
+            attribution: '&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors &copy; <a href="https://carto.com/attributions">CARTO</a>',
+            subdomains: 'abcd',
+            maxZoom: 20
+        }).addTo(map);
+
+        // Ícone Customizado do Rotary (Pin com engrenagem dentro)
+        const rotaryIcon = L.divIcon({
+            className: 'custom-rotary-pin',
+            html: '<div class="pin-marker"><img src="assets/images/rotary-icon.png" alt="Rotary"></div>',
+            iconSize: [46, 46], // Tamanho do invólucro do pin
+            iconAnchor: [23, 46], // Ponto que encosta no mapa (base)
+            popupAnchor: [0, -46] // Onde o popup abre
+        });
+
+        // Adiciona o marcador no mapa
+        L.marker([-30.00977283086968, -51.16104862359489], {icon: rotaryIcon}).addTo(map)
+            .bindPopup('<b>Lindóia Tênis Clube</b><br>Sede das nossas reuniões.')
+            .openPopup();
+    }
 });
