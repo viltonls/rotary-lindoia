@@ -467,7 +467,7 @@ header {
     display: block;
     width: 100%;
     padding: 10px 20px;
-    color: var(--text-dark);
+    color: var(--rotary-blue);
     font-weight: 500;
     font-size: 0.9rem;
     transition: var(--transition);
@@ -924,16 +924,33 @@ textarea:focus {
 }
 
 .project-list-card {
-    padding: 30px 25px;
-    border: 1px solid rgba(0, 0, 0, 0.05);
+    padding: 40px;
+    background: var(--white);
+    border-radius: 20px;
+    border: 1px solid rgba(0, 0, 0, 0.04);
     grid-column: 1 / -1;
+    box-shadow: 0 15px 40px rgba(0, 0, 0, 0.04);
+    position: relative;
+    overflow: hidden;
+}
+
+.project-list-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 4px;
+    background: linear-gradient(90deg, var(--rotary-blue), var(--rotary-light-blue));
 }
 
 .project-list-card h3 {
-    font-size: 1.3rem;
-    margin-bottom: 20px;
+    font-size: 1.5rem;
+    margin-bottom: 25px;
     position: relative;
-    padding-bottom: 8px;
+    padding-bottom: 10px;
+    color: var(--rotary-blue);
+    font-weight: 700;
 }
 
 .project-list-card h3::after {
@@ -941,55 +958,104 @@ textarea:focus {
     position: absolute;
     bottom: 0;
     left: 0;
-    width: 40px;
-    height: 2px;
+    width: 50px;
+    height: 3px;
     background-color: var(--rotary-gold);
+    border-radius: 3px;
 }
 
 .clean-list {
     list-style: none;
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-    gap: 15px;
+    gap: 20px;
 }
 
 .clean-list strong {
     color: var(--rotary-blue);
     font-weight: 700;
+    font-size: 1.05rem;
     display: block;
+    margin-bottom: 6px;
+    transition: color 0.3s ease;
 }
 
 .clean-list .btn-link-inline {
-    display: block;
+    display: inline-flex;
+    align-items: center;
     margin-left: 0;
-    margin-top: 10px;
+    margin-top: 15px;
+    font-weight: 600;
+    color: var(--rotary-light-blue);
+    position: relative;
+    transition: all 0.3s ease;
+    padding: 0;
+}
+
+.clean-list .btn-link-inline::after {
+    content: '\f061';
+    font-family: 'Font Awesome 5 Free';
+    font-weight: 900;
+    margin-left: 6px;
+    font-size: 0.8rem;
+    transition: transform 0.3s ease;
+}
+
+.clean-list .btn-link-inline:hover {
+    color: var(--rotary-blue);
+}
+
+.clean-list .btn-link-inline:hover::after {
+    transform: translateX(4px);
 }
 
 .clean-list li {
     margin: 0;
     color: var(--text-light);
     font-size: 0.95rem;
-    padding: 15px;
-    background: rgba(0, 0, 0, 0.02);
-    border-radius: 8px;
+    padding: 24px 24px 24px 75px;
+    background: var(--bg-light);
+    border-radius: 14px;
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
-    border: 1px solid transparent;
+    border: 1px solid rgba(0, 0, 0, 0.03);
     position: relative;
-    padding-left: 45px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
 }
 
 .clean-list li:hover {
     background: var(--white);
-    border-color: rgba(247, 168, 27, 0.2);
-    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-    transform: translateX(5px);
+    border-color: rgba(247, 168, 27, 0.3);
+    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.06), 0 5px 15px rgba(247, 168, 27, 0.08);
+    transform: translateY(-5px);
+}
+
+.clean-list li:hover strong {
+    color: var(--rotary-gold);
 }
 
 .clean-list li i {
     position: absolute;
-    left: 15px;
-    top: 18px;
-    font-size: 1.2rem;
+    left: 20px;
+    top: 24px;
+    font-size: 1.1rem;
+    color: var(--rotary-blue) !important;
+    background: rgba(0, 94, 170, 0.08);
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 12px;
+    transition: all 0.4s ease;
+}
+
+.clean-list li:hover i {
+    background: var(--rotary-blue);
+    color: var(--white) !important;
+    transform: scale(1.1) rotate(5deg);
+    box-shadow: 0 4px 10px rgba(0, 94, 170, 0.2);
 }
 
 .text-primary {
@@ -1293,53 +1359,66 @@ textarea:focus {
    ========================================= */
 .directors-grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 20px;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 30px;
 }
 
 .director-card {
     display: flex;
     align-items: center;
-    gap: 15px;
-    padding: 20px;
+    gap: 20px;
+    padding: 30px 25px;
     background: var(--white);
     border-left: 4px solid var(--rotary-blue);
-    transition: var(--transition);
+    border-radius: 16px;
+    transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.03);
+    position: relative;
+    overflow: hidden;
 }
 
 .director-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.12);
+    transform: translateY(-8px);
+    box-shadow: 0 15px 35px rgba(0, 94, 170, 0.08);
+    border-color: var(--rotary-gold);
 }
 
 .director-avatar {
-    width: 58px;
-    height: 58px;
-    min-width: 58px;
+    width: 65px;
+    height: 65px;
+    min-width: 65px;
     border-radius: 50%;
-    background: rgba(0, 94, 170, 0.08);
+    background: rgba(0, 94, 170, 0.06);
     font-size: 1.6rem;
     color: var(--rotary-blue);
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 0.4s ease;
+}
+
+.director-card:hover .director-avatar {
+    background: var(--rotary-blue);
+    color: var(--white);
+    transform: scale(1.1);
 }
 
 .director-info h4 {
-    font-size: 1.05rem;
-    margin-bottom: 2px;
+    font-size: 1.15rem;
+    margin-bottom: 6px;
     color: var(--rotary-blue);
+    font-weight: 700;
 }
 
 .director-name {
     font-size: 0.95rem;
     font-weight: 600;
     color: var(--text-dark);
-    margin-bottom: 2px !important;
+    margin-bottom: 4px !important;
 }
 
 .director-period {
-    font-size: 0.8rem;
+    font-size: 0.85rem;
     color: var(--text-light);
     font-style: italic;
 }
@@ -1818,6 +1897,17 @@ textarea:focus {
     color: var(--rotary-blue);
 }
 
+.partner-logo img {
+    max-width: 80%;
+    max-height: 80%;
+    object-fit: contain;
+    transition: var(--transition);
+}
+
+.partner-logo:hover img {
+    transform: scale(1.05);
+}
+
 /* =========================================
    MAP WRAPPER & GLASS HEADER
    ========================================= */
@@ -2037,7 +2127,7 @@ header {
 .action-tab-btn.active {
     background: var(--rotary-blue);
     color: var(--white) !important;
-    box-shadow: 0 5px 15px rgba(247, 168, 27, 0.3);
+    box-shadow: 0 5px 15px rgba(0, 94, 170, 0.3);
 }
 
 .action-tab-btn:hover:not(.active) {
@@ -2749,9 +2839,15 @@ dialog.project-modal[open] {
 }
 
 .tab-intro-card {
-    padding: 20px 30px;
+    padding: 30px 40px;
+    background: var(--white);
     border-left: 4px solid var(--rotary-gold);
+    border-radius: 12px;
     color: var(--text-light);
+    margin-bottom: 3rem;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.04);
+    font-size: 1rem;
+    line-height: 1.7;
 }
 
 /* Responsividade de Mídia */
@@ -2783,9 +2879,12 @@ dialog.project-modal[open] {
         text-align: left;
     }
 
-    .sat-tab-btn.active,
-    .action-tab-btn.active {
+    .sat-tab-btn.active {
         border-left-color: var(--rotary-gold);
+    }
+
+    .action-tab-btn.active {
+        border-left-color: var(--rotary-blue);
     }
 }
 
@@ -2814,4 +2913,35 @@ dialog.project-modal[open] {
             transform: translateY(0);
         }
     }
+}
+
+/* =========================================
+   CUSTOM MAP PIN (LEAFLET)
+   ========================================= */
+.custom-rotary-pin {
+    background: none;
+    border: none;
+}
+
+.pin-marker {
+    width: 46px;
+    height: 46px;
+    background-color: var(--rotary-blue);
+    border-radius: 50% 50% 50% 0;
+    transform: rotate(-45deg);
+    position: relative;
+    box-shadow: -2px 2px 6px rgba(0, 0, 0, 0.3);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 2px solid white;
+}
+
+.pin-marker img {
+    width: 26px;
+    height: 26px;
+    transform: rotate(45deg);
+    border-radius: 50%;
+    background: white;
+    padding: 2px;
 }
