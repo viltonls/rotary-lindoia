@@ -17,13 +17,31 @@
 
     /* Typography */
     --font-main: 'Inter', sans-serif;
+    --font-display: 'Fraunces', Georgia, serif;
 
-    /* Spacing & Transitions */
+    /* Spacing Scale */
+    --space-1: 0.5rem;
+    --space-2: 1rem;
+    --space-3: 1.5rem;
+    --space-4: 2rem;
+    --space-5: 3rem;
+    --space-6: 5rem;
+
+    /* Radius */
+    --radius-sm: 10px;
+    --radius-lg: 18px;
+    --border-radius: 12px;
+
+    /* Transitions */
     --transition: all 0.3s ease;
     --transition-premium: all 0.45s cubic-bezier(0.16, 1, 0.3, 1);
-    --box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-    --box-shadow-premium: 0 15px 45px rgba(0, 0, 0, 0.08);
-    --border-radius: 8px;
+
+    /* Shadows (tinted with Rotary navy for a more designed feel) */
+    --shadow-sm: 0 4px 14px rgba(16, 42, 67, 0.06);
+    --shadow-md: 0 12px 30px rgba(16, 42, 67, 0.09);
+    --shadow-lg: 0 22px 50px rgba(16, 42, 67, 0.13);
+    --box-shadow: var(--shadow-md);
+    --box-shadow-premium: var(--shadow-lg);
 }
 
 /* Custom Premium Scrollbar */
@@ -54,13 +72,19 @@
 body {
     font-family: var(--font-main);
     color: var(--text-dark);
-    line-height: 1.6;
+    line-height: 1.7;
     background-color: var(--white);
     overflow-x: hidden;
 }
 
 html {
     scroll-behavior: smooth;
+}
+
+/* Compensa o header fixo ao navegar por âncoras */
+section[id],
+footer[id] {
+    scroll-margin-top: 90px;
 }
 
 /* =========================================
@@ -82,6 +106,8 @@ html {
 
 .bg-light {
     background-color: var(--bg-light);
+    background-image: radial-gradient(rgba(0, 94, 170, 0.045) 1px, transparent 1px);
+    background-size: 22px 22px;
 }
 
 .box-shadow {
@@ -101,6 +127,7 @@ html {
     padding: 10px 24px;
     border-radius: 30px;
     font-weight: 600;
+    letter-spacing: 0.2px;
     text-decoration: none;
     transition: var(--transition-premium);
     cursor: pointer;
@@ -111,11 +138,29 @@ html {
 .btn-primary {
     background: linear-gradient(135deg, var(--rotary-gold), #e09612);
     color: var(--white);
+    position: relative;
+    overflow: hidden;
+}
+
+.btn-primary::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(to right, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.3) 50%, rgba(255, 255, 255, 0) 100%);
+    transform: skewX(-20deg);
+    transition: left 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.btn-primary:hover::after {
+    left: 150%;
 }
 
 .btn-primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 8px 20px rgba(247, 168, 27, 0.35);
+    box-shadow: 0 8px 20px rgba(247, 168, 27, 0.45);
 }
 
 .btn-outline {
@@ -166,6 +211,20 @@ h4 {
     margin-bottom: 1rem;
 }
 
+/* Fonte de display nos títulos principais para dar autoridade e contraste */
+h1,
+h2 {
+    font-family: var(--font-display);
+    font-weight: 600;
+    letter-spacing: -0.01em;
+    text-wrap: balance;
+}
+
+h3,
+h4 {
+    text-wrap: balance;
+}
+
 h2 {
     font-size: 2rem;
 }
@@ -177,15 +236,30 @@ h2 {
     margin-bottom: 2rem;
 }
 
+/* Selo de engrenagem — assinatura Rotary acima de cada título */
+.section-title h2::before {
+    content: '';
+    display: block;
+    width: 32px;
+    height: 32px;
+    margin: 0 auto 0.9rem auto;
+    background-image: url('../assets/images/logo-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.9;
+}
+
 .section-title h2::after {
     content: '';
     position: absolute;
     bottom: -10px;
     left: 50%;
     transform: translateX(-50%);
-    width: 60px;
-    height: 3px;
-    background-color: var(--rotary-gold);
+    width: 72px;
+    height: 4px;
+    border-radius: 4px;
+    background: linear-gradient(90deg, var(--rotary-gold), rgba(247, 168, 27, 0.25));
 }
 
 .section-title p {
@@ -196,7 +270,7 @@ h2 {
 }
 
 .tag {
-    background-color: var(--rotary-gold);
+    background-color: var(--rotary-blue);
     color: var(--white);
     padding: 5px 15px;
     border-radius: 20px;
@@ -207,6 +281,42 @@ h2 {
     margin-bottom: 1rem;
 }
 
+/* Marca-d'água gigante e suave ao fundo de seções-chave */
+.about-section,
+.projects-section,
+.join-us-section,
+.satellite-section {
+    position: relative;
+    z-index: 1;
+    overflow: hidden;
+}
+
+.about-section::before,
+.projects-section::before,
+.join-us-section::before,
+.satellite-section::before {
+    content: '';
+    position: absolute;
+    top: 50%;
+    right: -10%;
+    transform: translateY(-50%);
+    width: 600px;
+    height: 600px;
+    background-image: url('../assets/images/logo-icon.png');
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: center;
+    opacity: 0.04;
+    z-index: -1;
+    pointer-events: none;
+}
+
+.projects-section::before,
+.satellite-section::before {
+    right: auto;
+    left: -10%;
+}
+
 /* =========================================
    HEADER & NAVIGATION
    ========================================= */
@@ -215,6 +325,7 @@ header {
     top: 0;
     left: 0;
     width: 100%;
+    height: 80px;
     background-color: var(--white);
     box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
     z-index: 1000;
@@ -225,11 +336,26 @@ header {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 80px;
+    height: 100%;
 }
 
 .logo a {
     text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+}
+
+.logo-img {
+    height: 48px;
+    width: auto;
+    max-width: 100%;
+    object-fit: contain;
+    display: block;
+    transition: var(--transition-premium);
+}
+
+.logo-img:hover {
+    transform: scale(1.03);
 }
 
 .logo h1 {
@@ -250,7 +376,7 @@ header {
 
 .nav-links a {
     text-decoration: none;
-    color: var(--text-dark);
+    color: var(--rotary-blue);
     font-weight: 600;
     transition: var(--transition);
     position: relative;
@@ -416,13 +542,15 @@ header {
 
 /* Glassmorphism Manifesto Card */
 .manifesto-card {
-    background: rgba(255, 255, 255, 0.07);
+    background: linear-gradient(135deg, rgba(255, 255, 255, 0.1), rgba(255, 255, 255, 0.02));
     border: 1px solid rgba(255, 255, 255, 0.18);
+    border-top: 1px solid rgba(255, 255, 255, 0.4);
+    border-left: 1px solid rgba(255, 255, 255, 0.3);
     backdrop-filter: blur(20px);
     -webkit-backdrop-filter: blur(20px);
     padding: 35px;
     border-radius: 16px;
-    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 20px 50px rgba(0, 0, 0, 0.25), inset 0 0 20px rgba(255, 255, 255, 0.05);
     color: var(--white);
     position: relative;
     overflow: hidden;
@@ -436,12 +564,10 @@ header {
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(
-        90deg,
-        transparent,
-        rgba(255, 255, 255, 0.08),
-        transparent
-    );
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(255, 255, 255, 0.08),
+            transparent);
     transition: 0.5s;
 }
 
@@ -535,7 +661,7 @@ header {
 }
 
 .highlight-item:hover i {
-    transform: scale(1.15) rotate(5deg);
+    transform: scale(1.12);
 }
 
 .highlight-item span {
@@ -575,9 +701,9 @@ input[type="tel"],
 select,
 textarea {
     width: 100%;
-    padding: 12px 15px;
+    padding: 13px 16px;
     border: 1px solid var(--border-color);
-    border-radius: 5px;
+    border-radius: var(--radius-sm);
     font-family: var(--font-main);
     font-size: 1rem;
     transition: var(--transition);
@@ -710,7 +836,7 @@ textarea:focus {
     content: '';
     position: absolute;
     width: 2px;
-    background-color: var(--rotary-light-blue);
+    background: linear-gradient(to bottom, var(--rotary-light-blue), rgba(0, 155, 223, 0.08));
     top: 0;
     bottom: 0;
     left: 20px;
@@ -749,14 +875,18 @@ textarea:focus {
 .project-card {
     transition: all 0.4s cubic-bezier(0.16, 1, 0.3, 1);
     border: 1px solid rgba(0, 0, 0, 0.05);
+    border-top: 3px solid transparent;
     background: var(--white);
     overflow: hidden;
 }
 
 .project-card:hover {
-    transform: translateY(-10px);
-    box-shadow: 0 15px 35px rgba(0, 0, 0, 0.12);
-    border-color: rgba(247, 168, 27, 0.3);
+    transform: translateY(-8px) scale(1.02);
+    box-shadow: 0 22px 40px rgba(0, 94, 170, 0.12), 0 0 20px rgba(247, 168, 27, 0.15);
+    border-color: rgba(247, 168, 27, 0.4);
+    border-top-color: var(--rotary-gold);
+    z-index: 2;
+    position: relative;
 }
 
 .project-img-wrapper {
@@ -1183,7 +1313,12 @@ textarea:focus {
 }
 
 .director-avatar {
-    font-size: 2.2rem;
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 50%;
+    background: rgba(0, 94, 170, 0.08);
+    font-size: 1.6rem;
     color: var(--rotary-blue);
     display: flex;
     align-items: center;
@@ -1265,7 +1400,12 @@ textarea:focus {
 }
 
 .sat-director-avatar {
-    font-size: 2.2rem;
+    width: 58px;
+    height: 58px;
+    min-width: 58px;
+    border-radius: 50%;
+    background: rgba(247, 168, 27, 0.12);
+    font-size: 1.6rem;
     color: var(--rotary-gold);
     display: flex;
     align-items: center;
@@ -1741,6 +1881,14 @@ header {
 }
 
 @media (max-width: 768px) {
+    header {
+        height: 80px;
+    }
+
+    .logo-img {
+        height: 44px;
+    }
+
     .nav-links {
         display: none;
         position: absolute;
@@ -1828,6 +1976,20 @@ header {
     }
 }
 
+@media (max-width: 480px) {
+    header {
+        height: 70px;
+    }
+
+    .logo-img {
+        height: 36px;
+    }
+
+    .nav-links {
+        top: 70px;
+    }
+}
+
 /* =========================================
    ADDITIONAL STYLES - ROTARY LINDÓIA RESTRUCTURE
    ========================================= */
@@ -1873,7 +2035,7 @@ header {
 }
 
 .action-tab-btn.active {
-    background: var(--rotary-gold);
+    background: var(--rotary-blue);
     color: var(--white) !important;
     box-shadow: 0 5px 15px rgba(247, 168, 27, 0.3);
 }
@@ -2624,5 +2786,32 @@ dialog.project-modal[open] {
     .sat-tab-btn.active,
     .action-tab-btn.active {
         border-left-color: var(--rotary-gold);
+    }
+}
+
+/* =========================================
+   ANIMAÇÕES MODERNAS (SCROLL E MICRO-INTERAÇÕES)
+   ========================================= */
+@supports (animation-timeline: view()) {
+
+    .project-card,
+    .feature-box,
+    .about-text,
+    .about-image {
+        animation: fade-up-scroll linear both;
+        animation-timeline: view();
+        animation-range: entry 10% cover 30%;
+    }
+
+    @keyframes fade-up-scroll {
+        from {
+            opacity: 0;
+            transform: translateY(60px);
+        }
+
+        to {
+            opacity: 1;
+            transform: translateY(0);
+        }
     }
 }

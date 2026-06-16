@@ -232,6 +232,13 @@ header {
 
 .logo a {
     text-decoration: none;
+    display: block;
+}
+
+.logo-img {
+    max-height: 100px;
+    width: auto;
+    display: block;
 }
 
 .logo h1 {
@@ -396,6 +403,7 @@ header {
     align-items: center;
 }
 
+.slide-content h1,
 .slide-content h2 {
     color: var(--white);
     font-size: 3.5rem;
@@ -1713,6 +1721,7 @@ header {
         text-align: center;
     }
 
+    .slide-content h1,
     .slide-content h2 {
         font-size: 2.5rem;
     }
@@ -2308,7 +2317,7 @@ dialog.project-modal[open] {
     display: flex;
     flex-direction: column;
     align-items: center;
-    justify-content: space-between;
+    justify-content: flex-start;
     min-height: 350px;
 }
 
@@ -2653,7 +2662,7 @@ footer {
 }
 
 /* Image to SVG Placeholders */
-img {
+img:not(.logo-img) {
     content: url("data:image/svg+xml;charset=utf-8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='300'%20height='200'%20viewBox='0%200%20300%20200'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%23e0e0e0'%20stroke='%23888888'%20stroke-width='2'/%3E%3Cline%20x1='0'%20y1='0'%20x2='300'%20y2='200'%20stroke='%23aaaaaa'%20stroke-width='2'/%3E%3Cline%20x1='300'%20y1='0'%20x2='0'%20y2='200'%20stroke='%23aaaaaa'%20stroke-width='2'/%3E%3Ctext%20x='50%25'%20y='50%25'%20dominant-baseline='middle'%20text-anchor='middle'%20font-family='monospace'%20font-size='20'%20font-weight='bold'%20fill='%23555555'%3E[IMAGEM]%3C/text%3E%3C/svg%3E") !important;
     object-fit: cover !important;
     border: 2px dashed #888888 !important;
@@ -2669,6 +2678,7 @@ img {
     color: #111111 !important;
 }
 
+.slide-content h1,
 .slide-content h2,
 .slide-content p {
     color: #111111 !important;
@@ -2751,7 +2761,8 @@ img {
     background: #e0e0e0 !important;
     color: #333333 !important;
     margin: 4px !important;
-    padding: 8px 16px !important; /* Slightly more compact padding to prevent overflowing */
+    padding: 8px 16px !important;
+    /* Slightly more compact padding to prevent overflowing */
 }
 
 .action-tab-btn.active,
@@ -2945,6 +2956,7 @@ textarea:focus {
 }
 
 @media (max-width: 768px) {
+
     /* Section paddings - less vertical space wasted on mobile */
     section,
     .about-section,
@@ -3023,6 +3035,7 @@ textarea:focus {
 }
 
 @media (max-width: 600px) {
+
     /* Stack Director cards to 1 column to avoid squeezed names */
     .directors-grid,
     .sat-directors-grid {
@@ -3032,12 +3045,14 @@ textarea:focus {
 }
 
 @media (max-width: 480px) {
+
     /* Tighten container margins and paddings even further on tiny viewports */
     .action-tabs-container,
     .form-container {
         padding: 15px !important;
     }
 
+    .slide-content h1,
     .slide-content h2 {
         font-size: 2rem !important;
     }
