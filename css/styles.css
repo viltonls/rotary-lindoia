@@ -2839,6 +2839,8 @@ dialog.project-modal[open] {
 }
 
 .tab-intro-card {
+    position: relative;
+    z-index: 1;
     padding: 30px 40px;
     background: var(--white);
     border-left: 4px solid var(--rotary-gold);
