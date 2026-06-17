@@ -1933,6 +1933,11 @@ header {
         grid-template-columns: 1fr;
     }
 
+    /* Diretoria: 2x2 no tablet em vez de 3+1 */
+    .directors-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
     .slide-content {
         grid-template-columns: 1fr;
         gap: 40px;
@@ -1964,15 +1969,8 @@ header {
     }
 }
 
-@media (max-width: 768px) {
-    header {
-        height: 80px;
-    }
-
-    .logo-img {
-        height: 44px;
-    }
-
+@media (max-width: 1064px) {
+    /* Navegação colapsa para o menu hambúrguer */
     .nav-links {
         display: none;
         position: absolute;
@@ -1997,19 +1995,7 @@ header {
         display: none;
     }
 
-    .quick-highlights {
-        flex-wrap: wrap;
-        transform: translateY(0);
-        box-shadow: none;
-        padding: 20px 0;
-    }
-
-    .highlight-item {
-        flex-basis: 33.33%;
-        margin-bottom: 20px;
-    }
-
-    /* Dropdown Mobile Accordion Styles */
+    /* Dropdown vira acordeão no menu mobile */
     .dropdown {
         width: 100%;
     }
@@ -2060,6 +2046,86 @@ header {
     }
 }
 
+@media (max-width: 768px) {
+    header {
+        height: 80px;
+    }
+
+    .logo-img {
+        height: 44px;
+    }
+
+    .quick-highlights {
+        flex-wrap: wrap;
+        transform: translateY(0);
+        box-shadow: none;
+        padding: 20px 0;
+    }
+
+    .highlight-item {
+        flex-basis: 33.33%;
+        margin-bottom: 20px;
+    }
+
+    /* Espaçamento vertical das seções reduzido no mobile */
+    .about-section,
+    .projects-section,
+    .satellite-section,
+    .news-events-section,
+    .events-section,
+    .news-testimonials-section,
+    .how-to-participate-section {
+        padding: 60px 0;
+    }
+
+    .partners-section {
+        padding: 50px 0;
+    }
+
+    /* Tipografia de títulos */
+    .section-title h2 {
+        font-size: 2rem;
+    }
+
+    .section-title p {
+        font-size: 1rem;
+        margin-bottom: 2rem;
+    }
+
+    /* Containers de formulário/abas com padding menor */
+    .form-container {
+        padding: 30px 24px;
+    }
+
+    .action-tabs-container {
+        padding: 30px 20px;
+    }
+
+    /* Modais */
+    .modal-box {
+        padding: 32px 24px;
+    }
+
+    .modal-header h2 {
+        font-size: 1.75rem;
+        padding-right: 44px;
+    }
+
+    .modal-body p,
+    .modal-highlight-p {
+        font-size: 1rem;
+    }
+
+    .modal-highlight-p {
+        padding: 16px 18px;
+    }
+
+    .close-modal-btn {
+        top: 16px;
+        right: 16px;
+    }
+}
+
 @media (max-width: 480px) {
     header {
         height: 70px;
@@ -2071,6 +2137,48 @@ header {
 
     .nav-links {
         top: 70px;
+    }
+
+    /* Evita títulos grandes estourando em telas estreitas */
+    .slide-content h2 {
+        font-size: 2rem;
+    }
+
+    .slide-content p {
+        font-size: 1.05rem;
+    }
+
+    .section-title h2 {
+        font-size: 1.7rem;
+    }
+
+    h2 {
+        font-size: 1.6rem;
+    }
+
+    /* Destaques rápidos: 2 por linha para não espremer ícones/labels */
+    .highlight-item {
+        flex-basis: 50%;
+    }
+
+    /* Botões de ação empilhados para não estourar a largura */
+    .hero-actions {
+        flex-direction: column;
+        width: 100%;
+    }
+
+    .hero-actions .btn {
+        width: 100%;
+        text-align: center;
+    }
+
+    .modal-box {
+        padding: 28px 18px;
+    }
+
+    /* Diretoria empilhada no celular */
+    .directors-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -2948,13 +3056,16 @@ dialog.project-modal[open] {
     .satelite-tab-buttons {
         flex-direction: column;
         align-items: stretch;
+        width: 100%;
+        border-radius: 12px;
     }
 
     .sat-tab-btn,
     .action-tab-btn {
         border-bottom: none;
         border-left: 3px solid transparent;
-        text-align: left;
+        text-align: center;
+        border-radius: 8px;
     }
 
     .sat-tab-btn.active {

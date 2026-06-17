@@ -30,7 +30,7 @@ document.addEventListener('DOMContentLoaded', () => {
         const toggle = dropdown.querySelector('.dropdown-toggle');
         if (toggle) {
             toggle.addEventListener('click', (e) => {
-                if (window.innerWidth <= 768) {
+                if (window.innerWidth <= 1064) {
                     e.preventDefault();
                     e.stopPropagation();
                     
@@ -64,7 +64,7 @@ document.addEventListener('DOMContentLoaded', () => {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         anchor.addEventListener('click', function (e) {
             // Ignora rolagem direta no mobile para os seletores de submenu
-            if (this.classList.contains('dropdown-toggle') && window.innerWidth <= 768) {
+            if (this.classList.contains('dropdown-toggle') && window.innerWidth <= 1064) {
                 return;
             }
 
